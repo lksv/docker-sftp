@@ -1,3 +1,8 @@
-= sftp docker
+# sftp docker
 
      sudo docker run -p 2002:22 --name ssh_test -e USERNAME=ftp -e PASSWORD=ftp -v /some/host/direcotry:/sftp docker_sshd &
+
+
+# build
+
+     sudo docker build -no-cache -t lksv/docker_sshd:0.3 .

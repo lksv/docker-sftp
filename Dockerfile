@@ -1,15 +1,16 @@
 # sshd
 #
-# VERSION               0.0.1
+# VERSION               0.0.3
 
-FROM     ubuntu:14.10
+FROM     ubuntu:14.04.3
 MAINTAINER Lukas Svoboda "lukas.svoboda@gmail.com"
 
 RUN export DEBIAN_FRONTEND=noninteractive
 ENV DEBIAN_FRONTEND noninteractive
 RUN dpkg-divert --local --rename --add /sbin/initctl
 
-RUN apt-get update && apt-get install -y openssh-server ca-certificates
+RUN apt-get update -qq && apt-get upgrade -y
+RUN apt-get install -y logrotate openssh-server ca-certificates
 RUN mkdir /var/run/sshd
 
 EXPOSE 22
